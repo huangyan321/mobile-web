@@ -12,7 +12,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.2rem;
   background-color: #ededed;
-
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: text;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 a {
@@ -25,6 +30,7 @@ $colors: ( //主题颜色
   "light": #f9f9f9,
   "grey": #999,
   "dark-light": #343440,
+  "black-light": #333333,
   "dark": #222,
   "black": #000);
 
@@ -72,11 +78,11 @@ $sizeValue in $font-sizes {
 }
 
 //主轴
-$fl-jc: (start: flex-start,
-  end: flex-end,
-  center: center,
-  between: space-between,
-  around: space-around);
+$fl-jc: ('start': flex-start,
+  'end': flex-end,
+  'center': center,
+  'between': space-between,
+  'around': space-around);
 
 @each $key,
 $value in $fl-jc {
@@ -148,19 +154,39 @@ $value in $mp {
     }
   }
 }
-//边距定义（水平垂直方向）
+
+//外边距定义（水平垂直方向）
 @each $key,
 $value in $mp {
 
   @each $levelKey,
   $levelValue in $type-levels {
     .#{$key}-x-#{$levelKey} {
-      margin-left: $levelValue*$base-type-levels;
-      margin-right: $levelValue*$base-type-levels;
+      #{$value}-left: $levelValue*$base-type-levels;
+      #{$value}-right: $levelValue*$base-type-levels;
     }
+
     .#{$key}-y-#{$levelKey} {
-      margin-top: $levelValue*$base-type-levels;
-      margin-bottom: $levelValue*$base-type-levels;
+      #{$value}-top: $levelValue*$base-type-levels;
+      #{$value}-bottom: $levelValue*$base-type-levels;
     }
   }
+}
+
+//精灵图
+.sprite {
+  background: url('../assets/img/index.png') no-repeat 0 0;
+  background-size: 28.8462rem;
+  display: inline-block;
+
+  &.sprite-logo {
+    background-position: 0 72.588%;
+    width: 2.3077rem;
+    height: 2.3077rem;
+
+  }
+}
+.btn {
+  border: none;
+  border-radius: 0.2308rem;
 }
