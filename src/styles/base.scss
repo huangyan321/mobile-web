@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-size: 13px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2rem;
+  background-color: #ededed;
+
+}
+
+a {
+  color: #343440;
+}
+
+$colors: ( //主题颜色
+  "primary": #db9e3f,
+  "white": #fff,
+  "light": #f9f9f9,
+  "grey": #999,
+  "dark-light": #343440,
+  "dark": #222,
+  "black": #000);
+
+@each $colorKey,
+$colorValue in $colors {
+  .color-#{$colorKey} {
+    color: $colorValue
+  }
+
+  .bgc-#{$colorKey} {
+    background-color: $colorValue
+  }
+}
+
+@each $var in (left, center, right) {
+  .text-#{$var} {
+    text-align: $var;
+  }
+}
+
+//字体尺寸
+$base-font-size : 1rem;
+$font-sizes: ("xs": 0.7692, //10px
+  "sm": 0.9231, //12px
+  "md": 1, //13px
+  "lg": 1.0769, //14px
+  "xl": 1.2308 //16px
+);
+
+@each $sizeKey,
+$sizeValue in $font-sizes {
+  .fs-#{$sizeKey} {
+    font-size: $sizeValue * $base-font-size
+  }
+}
+
+//flex 布局
+
+.d-fl {
+  display: flex;
+}
+
+.flex-c {
+  flex-direction: column;
+}
+
+//主轴
+$fl-jc: (start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around);
+
+@each $key,
+$value in $fl-jc {
+  .jc-#{$key} {
+    justify-content: $value;
+  }
+}
+
+// 交叉轴
+$fl-ai: (start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch);
+
+@each $key,
+$value in $fl-ai {
+  .ai-#{$key} {
+    align-items: $value;
+  }
+}
+
+.flex-1 {
+  flex: 1
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+//边距定义(单方向)
+$base-type-levels: 1rem;
+$mp: ('m': margin,
+  'p':padding, );
+$direction-types:('t': top,
+  'r': right,
+  'b': bottom,
+  'l': left,
+);
+$type-levels: ('0': 0,
+  '1': 0.25,
+  '2': 0.5,
+  '3': 1,
+  '4': 1.5,
+  '5': 3);
+
+@each $key,
+$value in $mp {
+
+  @each $directionKey,
+  $directionValue in $direction-types {
+
+    @each $levelKey,
+    $levelValue in $type-levels {
+      .#{$key}-#{$directionKey}-#{$levelKey} {
+        #{$value}-#{$directionValue}: $levelValue*$base-type-levels
+      }
+    }
+  }
+}
+
+//边距定义（所有方向）
+@each $key,
+$value in $mp {
+
+  @each $levelKey,
+  $levelValue in $type-levels {
+    .#{$key}-#{$levelKey} {
+      #{$value}: $levelValue*$base-type-levels
+    }
+  }
+}
+//边距定义（水平垂直方向）
+@each $key,
+$value in $mp {
+
+  @each $levelKey,
+  $levelValue in $type-levels {
+    .#{$key}-x-#{$levelKey} {
+      margin-left: $levelValue*$base-type-levels;
+      margin-right: $levelValue*$base-type-levels;
+    }
+    .#{$key}-y-#{$levelKey} {
+      margin-top: $levelValue*$base-type-levels;
+      margin-bottom: $levelValue*$base-type-levels;
+    }
+  }
+}
