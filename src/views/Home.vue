@@ -5,7 +5,7 @@
         <div class="d-fl ai-center p-l-4 flex-1">
           <div class="sprite sprite-logo"></div>
           <div class="m-l-3">
-            <div class="fs-lg color-white">王者荣耀</div>
+            <h1 class="fs-lg color-white">王者荣耀</h1>
             <div class="color-grey fs-xs"><span>团队成就更多</span></div>
           </div>
         </div>
