@@ -17,10 +17,10 @@ export default {
   },
   data() {
     return {
-      title: "新闻资讯",
+      title: "精彩视频",
       showMore: true,
       sprite: "sprite-news",
-      tabs: ["热门","新闻","公告","活动","赛事"]
+      tabs: ["精品栏目","英雄攻略","赛事精品","",""]
     };
   },
   mounted() {},

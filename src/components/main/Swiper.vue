@@ -2,13 +2,13 @@
   <div>
     <swiper ref="mySwiper" :options="swiperOptions">
       <swiper-slide
-        ><img src="../../assets/img/swiper1.jpeg" alt=""
+        ><img src="@/assets/img/swiper1.jpeg" alt=""
       /></swiper-slide>
       <swiper-slide
-        ><img src="../../assets/img/swiper2.jpeg" alt=""
+        ><img src="@/assets/img/swiper2.jpeg" alt=""
       /></swiper-slide>
       <swiper-slide
-        ><img src="../../assets/img/swiper3.jpeg" alt=""
+        ><img src="@/assets/img/swiper3.jpeg" alt=""
       /></swiper-slide>
       <div class="swiper-pagination text-right" slot="pagination"></div>
     </swiper>
