@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="swiper">
+    <div>
       <Swiper></Swiper>
     </div>
     <div>
@@ -33,8 +33,7 @@ export default {
     NiceVideo,
   },
   data() {
-    return {
-    };
+    return {};
   },
 };
 </script>
