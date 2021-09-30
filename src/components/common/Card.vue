@@ -1,7 +1,7 @@
 <template>
   <div class="news bgc-white m-t-3 p-x-3 color-dark">
     <div
-      class="p-y-2 d-fl m-b-2 ai-center"
+      class="p-y-2 d-fl ai-center"
       style="height: 3rem; box-sizing: content-box"
     >
       <div class="sprite" :class="spriteClass"></div>
@@ -17,9 +17,13 @@
     </div>
     <div class="main color-dark" style="height: 1rem">
       <div class="nav">
-        <ul class="d-fl ai-center jc-between" style="height: 100%">
+        <ul
+          class="d-fl ai-center jc-between"
+          style="height: 100%"
+          :style="{width: tabWidth}"
+        >
           <li
-            v-for="(item, index) in tabs"
+            v-for="(item, index) in catData"
             :key="index"
             @click="curBtnClick(index)"
           >
@@ -28,7 +32,7 @@
                 { 'active-news-item': currentIndex === index },
                 'active-news',
               ]"
-              >{{ item }}</span
+              >{{ item.tab }}</span
             >
           </li>
         </ul>
@@ -36,15 +40,11 @@
     </div>
     <div class="content p-y-3">
       <Swiper ref="mySwiper" :options="swiperOptions">
-        <SwiperSlide v-for="(item, index) of tabsFilter" :key="index"
-          ><ul>
-            <li v-for="(i, ind) of 5" :key="ind" class="d-fl">
-              <span class="flag">热门</span>
-              <span class="title flex-1">大神带你棋局对弈，探秘峡谷~</span>
-              <span class="time">9/24</span>
-            </li>
-          </ul></SwiperSlide
-        >
+        <!-- 循环父组件注入的数据 -->
+        <SwiperSlide v-for="(category, index) of catData" :key="index">
+          <!-- 具名插槽，父级组件可使用#items取到该插槽，通过#items={category}可以取到category.categories，对每一块SwiperSlide进行数据注入 -->
+          <slot name="items" :category="category.categories"></slot>
+        </SwiperSlide>
       </Swiper>
     </div>
   </div>
@@ -74,9 +74,13 @@ export default {
       require: false,
       default: () => "",
     },
-    tabs: {
+    catData: {
       type: Array,
       default: () => ["请填入"],
+    },
+    tabWidth: {
+      type: String,
+      default: () => "100%",
     },
   },
   components: {
@@ -93,10 +97,6 @@ export default {
           slideChangeTransitionEnd: () => {
             this.currentIndex = this.swiper.activeIndex;
           },
-          resize: () => {
-            
-            this.swiper.updateSize();
-          }
         },
         // Some Swiper option/callback...
       },
@@ -142,21 +142,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-.content {
-  width: 100%;
-}
-.content li {
-  height: 1.5rem;
-  line-height: 1.5rem;
-  margin-top: 1rem;
-}
-.content .time {
-  width: 55px;
-}
-.content .title {
-  width: 60%; /* 首先给盒子设置一个宽度 */
-  overflow: hidden; /* 超出盒子的内容隐藏 */
-  text-overflow: ellipsis; /* 文本超出以省略号结尾 */
-  white-space: nowrap; /*禁止换行显示*/
+.hero-slide {
+  height: auto;
 }
 </style>
