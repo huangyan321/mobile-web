@@ -93,6 +93,10 @@ export default {
           slideChangeTransitionEnd: () => {
             this.currentIndex = this.swiper.activeIndex;
           },
+          resize: () => {
+            
+            this.swiper.updateSize();
+          }
         },
         // Some Swiper option/callback...
       },
