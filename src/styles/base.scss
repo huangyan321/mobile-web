@@ -93,7 +93,8 @@ $sizeValue in $font-sizes {
 $display: ('bl': block,
   'in-bl': inline-block,
   'il': inline,
-  'fl': flex);
+  'fl': flex,
+  'in-fl': inline-flex);
 
 @each $key,
 $value in $display {
@@ -232,7 +233,12 @@ $value in $mp {
     width: 2.3077rem;
     height: 100%;
   }
-
+  &.sprite-open {
+    background-position: 38.577% 52.076%;
+    width: 2.3077rem;
+    height: 100%;
+    transform: rotate(180deg);
+  }
   &.sprite-news {
     background-position: 0.138% 50.452%;
     width: 1rem;
