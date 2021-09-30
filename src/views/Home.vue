@@ -69,7 +69,11 @@ export default {
 .nav {
   height: 100%;
 }
-
+.nav-top {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
 .nav-item {
   height: 100%;
   width: 25%;
